@@ -1,133 +1,129 @@
+<!DOCTYPE HTML>
+<!--
+	ZeroFour by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Boca JS - Javascript Meetup</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	<style>
+		#header .inner {
+			background: url("images/JSBoca5.png");
+			height:150px;
+			max-width:960px;
+			
+		}
+		#header .inner h1 a {
+			vertical-align: top;
+		}
+		#header #nav {
+			padding-right:100px;
+		}
+		
+		#header h1 {
+			top:25%;
+		}
+		#header {
+			 max-width: 980px;
+			 margin: 0 auto 0 auto;
+		}
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="https://v4-alpha.getbootstrap.com/favicon.ico">
+		#slogan {
+			position:absolute;
+			top:30%;
+			left:7.5em;
+			color:white;
+		}
 
-    <title>Cover Template for Bootstrap</title>
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <!-- Bootstrap core CSS -->
-    <link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+	</style>
+	</head>
+	<body class="homepage">
+		<div id="page-wrapper">
 
-    <!-- Custom styles for this template -->
-    <link href="https://v4-alpha.getbootstrap.com/examples/cover/cover.css" rel="stylesheet">
-    <style>
+			<!-- Header -->
+				<div id="header-wrapper">
+					<div class="container">
 
-        /* initially hide all page except home */
-        .cover { display: none;}
-        #home {display:block;}
-    </style>
-    <script>
-       $(function() {
-            $(".nav-link").on("click",function() {
-                $(".cover").hide();
-                $(".nav-link").removeClass("active");
-                $(this).addClass("active");
-                var page = $(this).attr("href");
-                $(page).show();
-            });
-            $("#learnmore").on("click",function() {
-                $(".cover").hide();
-                $(".nav-link").removeClass("active");
-                $('a[href$="#github"]').addClass("active");
-                $("#github").show();
-            });
-            
-        });
+						<!-- Header -->
+							<header id="header">
+								<div class="inner">
 
-    </script>
-  </head>
+									<!-- Logo -->
+										<h1><a href="index.html" id="logo"><img src="images/JSBoca3.png" width="100" /></a></h1>
+										<h3 id="slogan">Boca JS<BR>Javascript Meetup Group</h3>
+									<!-- Nav -->
+										<nav id="nav">
+											<ul>
+												<li class="current_page_item"><a href="index.html">Home</a></li>
+												<li><a href="https://meetup.com/bocajs">Events</a></li>
+												<li><a href="http://github.com/bocajs">GitHub</a></li>
+												<li><a href="https://www.meetup.com/BocaJS/members/?op=leaders">Contact Us</a></li>
+											</ul>
+										</nav>
 
-  <body>
+								</div>
+							</header>
 
-    <div class="site-wrapper">
+						<!-- Banner -->
+							<div id="banner">
+								<h2 id="eventTitle">Event Title</h2>
+								<p id="eventDescription">Event Description</p>
+								<a href="#" id="eventUrl" class="button big icon fa-check-circle">Come Join Us</a>
+							</div>
 
-      <div class="site-wrapper-inner">
+					</div>
+				</div>
 
-        <div class="cover-container">
+			<!-- Main Wrapper -->
+			<script>
 
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand"><img src="http://bocajs.com/sites/bocajs.com/files/bocajs.png" /></h3>
-              <nav class="nav nav-masthead">
-                <a class="nav-link active" href="#home">Home</a>
-                <a class="nav-link" href="#github">Github</a>
-                <a class="nav-link" href="#contact">Contact</a>
-              </nav>
-            </div>
-          </div>
+					$(function() {
+							// Get next event
+							$.get( "http://wall.bocajs.com/nextEvent", function( data ) {
+									console.log(data);
+									var title = data.title;
+									var date = data.date;
+									var desc = data.description;
+									var location = data.location;
+									var url = data.url;
+									$("#eventTitle").html(title + " on "+ date);
+									$("#eventDescription").html("Location: "+location);
+									$("#eventUrl").attr("href",url);
+								});
+							// Next event
 
-          <div id="home" class="inner cover">
-            <h1 class="cover-heading">Our website YOUR way</h1>
-            <p class="lead">One of our organizers are being rebels and thinking YOU should do all the work.</p>
-            <p class="lead">
-              <a href="#github" id="learnmore" class="btn btn-lg btn-secondary">Learn more</a>
-            </p>
-          </div>
+					});
+			</script>
 
-          <div id="github" class="inner cover">
-            <h1 class="cover-heading">We have it all at GitHub Now</h1>
-            <p class="lead">Our Website, Slides, and MORE are now on Github</p>
-            <p class="lead">
-              <a href="http://github.com/bocajs" class="btn btn-lg btn-secondary">Find out more at GitHub</a>
-            </p>
-          </div>
+			<!-- Footer Wrapper -->
+			
+					<footer id="footer" class="container">
+								<div id="copyright">
+									<ul class="menu">
+										<li>&copy; BocaJS Meetup Group. All rights reserved</li><li>Design: <a href="http://monedllc.com">Moned</a></li>
+									</ul>
+								</div>
+					</footer>
+				
+		</div>
 
-            <div id="contact" class="inner cover">
-            <h1 class="cover-heading">Contact Us</h1>
-             <form class="user-info-from-cookie contact-form" action="http://bocajs.com/contact" method="post" id="contact-site-form" accept-charset="UTF-8">
-            <p class="lead">
-               
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Your Name</label>
-                    <input type="text" name="name" class="form-control" id="name"  placeholder="Enter your name" />
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" name="mail" class="form-control" id="mail" aria-describedby="emailHelp" placeholder="Enter email"/>
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Subject</label>
-                    <input type="text" name="subject" class="form-control" id="subject"  placeholder="Subject"/>
-                </div>
-                <div class="form-group">
-                    <label for="exampleTextarea">Your Message</label>
-                    <textarea class="form-control" name="message"  id="message" rows="3" placeholder="Tell us why you want to contact us"></textarea>
-                </div>
-              
-            </p>
-            <p class="lead">
-              <input type="Submit" class="form-control" value="Send Email" />
-            </p>
-              </form>
-          </div>
+		<!-- Scripts -->
 
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/skel-viewport.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
 
-          <div class="mastfoot">
-            <div class="inner">
-              <p>Fing out More at our <a href="http://meetup.com/bocajs">Meetup Page</a>.</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-
-    <script>window.jQuery || document.write('<script src="https://v4-alpha.getbootstrap.com/assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+	</body>
 </html>
