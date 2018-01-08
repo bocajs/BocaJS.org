@@ -1,0 +1,29 @@
+<html>
+<body>
+
+        <!-- If you don't have jquery yet -->
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+        
+        <!-- Title, description, location and link to meetup page -->
+        <h2 id="eventTitle">Event Title</h2>
+        <p id="eventDescription">Event Description</p>
+        <a href="#" id="eventUrl" class="button big icon fa-check-circle">Come Join Us</a>
+        
+        <!-- Here's the jQuery code that get's the information from the meetup api -->
+        <script>
+            $(function() {
+                    $.get( "http://wall.bocajs.com/nextEvent", function( data ) {
+                            var title = data.title;
+                            var date = data.date;
+                            var desc = data.description;
+                            var location = data.location;
+                            var url = data.url;
+                            $("#eventTitle").html(title + " on "+ date);
+                            $("#eventDescription").html(desc+"<BR><BR><B>Location</B>: <BR>"+location);
+                            $("#eventUrl").attr("href",url);
+                        });
+            });
+        </script>
+
+</body>
+</html>
