@@ -43,6 +43,10 @@
 			color:white;
 		}
 
+		#eventDescription {
+			text-align:left;
+		}
+
 	</style>
 	</head>
 	<body class="homepage">
@@ -74,14 +78,15 @@
 
 						<!-- Banner -->
 							<div id="banner">
-								<h2 id="eventTitle">Event Title</h2>
-								<p id="eventDescription">Event Description</p>
+								<h2 id="eventTitle">BocaJS</h2>
+								<p id="eventDescription" style="text-align:left;">LOCATION: 980 NORTH FEDERAL HIGHWAY BOCA RATON, FL</p>
 								<a href="#" id="eventUrl" class="button big icon fa-check-circle">Come Join Us</a>
 								<BR>
 								<h2 id="sponsors">Special thanks to:<BR>
 									<a href="http://www.cendynspaces.com/"><img src="https://bocajs.org/images/BocaJS-Sponsor-Cendyn.png"></a>
 									<a href="http://www.sherlocktalent.com"><img src="https://bocajs.org/images/BocaJS-Sherlock-Horizontal.png"></a>
 								</h2>
+								<small>&copy; BocaJS Meetup Group. &nbsp; All rights reserved &nbsp; &deg; &nbsp; Designed by: <a href="http://monedllc.com">Moned</a></small>
 							</div>
 
 					</div>
@@ -103,7 +108,7 @@
 									var desc = data.description;
 									var location = data.location;
 									var url = data.url;
-									$("#eventTitle").html(title + " on "+ date);
+									$("#eventTitle").html(title + "<BR /> Event Date: "+ date);
 									$("#eventDescription").html("Location: <BR>"+location);
 									$("#eventUrl").attr("href",url);
 								});
@@ -113,14 +118,7 @@
 			</script>
 
 			<!-- Footer Wrapper -->
-			
-					<footer id="footer" class="container">
-								<div id="copyright">
-									<ul class="menu">
-										<li>&copy; BocaJS Meetup Group. All rights reserved</li><li>Design: <a href="http://monedllc.com">Moned</a></li>
-									</ul>
-								</div>
-					</footer>
+
 				
 		</div>
 
