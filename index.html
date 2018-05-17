@@ -1,136 +1,497 @@
-<!DOCTYPE HTML>
-<!--
-	ZeroFour by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Boca JS - Javascript Meetup</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-		<!--[if lte IE 8]><script src="https://BocaJS.org/assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="https://BocaJS.org/assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="https://BocaJS.org/assets/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="https://BocaJS.org/assets/css/ie9.css" /><![endif]-->
-	<style>
-		#header .inner {
-			background: url("https://BocaJS.org/images/JSBoca5.png");
-			height:150px;
-			max-width:960px;
-			
-		}
-		#header .inner h1 a {
-			vertical-align: top;
-		}
-		#header #nav {
-			padding-right:100px;
-		}
-		
-		#header h1 {
-			top:25%;
-		}
-		#header {
-			 max-width: 980px;
-			 margin: 0 auto 0 auto;
-		}
+<!DOCTYPE html>
+<html lang="en">
 
-		#slogan {
-			position:absolute;
-			top:30%;
-			left:7.5em;
-			color:white;
-		}
+<head>
 
-		#eventDescription {
-			text-align:left;
-		}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="BocaJS - South Florida's JavaScript Community">
+    <meta name="author" content="BocaJS">
 
-	</style>
-	</head>
-	<body class="homepage">
-		<div id="page-wrapper">
+    <title>BocaJS - South Florida's JavaScript Community</title>
 
-			<!-- Header -->
-				<div id="header-wrapper">
-					<div class="container">
+    <!-- Favicon -->
+    <!--[if IE]><link rel="shortcut icon" href="favicon.ico"><![endif]-->
+    <link rel="icon" href="https://bocajs.org/images/JSBoca3.png">
 
-						<!-- Header -->
-							<header id="header">
-								<div class="inner">
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-									<!-- Logo -->
-										<h1><a href="index.html" id="logo"><img src="https://BocaJS.org/images/JSBoca3.png" width="100" /></a></h1>
-										<h3 id="slogan">Boca JS<BR>Javascript Community</h3>
-									<!-- Nav -->
-										<nav id="nav">
-											<ul>
-												<li class="current_page_item"><a href="index.html">Home</a></li>
-												<li><a href="https://meetup.com/bocajs">Events</a></li>
-												<li><a href="https://github.com/bocajs">GitHub</a></li>
-												<li><a href="https://www.meetup.com/BocaJS/members/?op=leaders">Contact Us</a></li>
-											</ul>
-										</nav>
+    <!-- Custom CSS -->
+    <link href="css/bocajs.css" rel="stylesheet">
 
-								</div>
-							</header>
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+    <!-- <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'> -->
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
-						<!-- Banner -->
-							<div id="banner">
-								<h2 id="eventTitle">BocaJS</h2>
-								<p id="eventDescription" style="text-align:left;">LOCATION: 980 NORTH FEDERAL HIGHWAY BOCA RATON, FL</p>
-								<a href="#" id="eventUrl" class="button big icon fa-check-circle">Come Join Us</a>
-								<BR>
-								<h2 id="sponsors">Special thanks to:<BR>
-									<a href="http://www.cendynspaces.com/"><img src="https://bocajs.org/images/BocaJS-Sponsor-Cendyn.png"></a>
-									<a href="http://www.sherlocktalent.com"><img src="https://bocajs.org/images/BocaJS-Sherlock-Horizontal.png"></a>
-								</h2>
-								<small>&copy; BocaJS Meetup Group. &nbsp; All rights reserved &nbsp; &deg; &nbsp; Designed by: <a href="http://monedllc.com">Moned</a></small>
-							</div>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-					</div>
-				</div>
-			<style>
-				#sponsors a {
-					vertical-align: text-top;
-				}
-			</style>
-			<!-- Main Wrapper -->
-			<script>
+</head>
 
-					$(function() {
-							// Get next event
-							$.get( "https://bocajswall.azurewebsites.net/nextEvent", function( data ) {
-									console.log(data);
-									var title = data.title;
-									var date = data.date;
-									var desc = data.description;
-									var location = data.location;
-									var url = data.url;
-									$("#eventTitle").html(title + "<BR /> Event Date: "+ date);
-									$("#eventDescription").html("Location: <BR>"+location);
-									$("#eventUrl").attr("href",url);
-								});
-							// Next event
+<body id="page-top" class="index">
 
-					});
-			</script>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="index.html#page-top">BocaJS
+                    <small>.org</small>
+                </a>
+            </div>
 
-			<!-- Footer Wrapper -->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="index.html#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="index.html#services">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="index.html#portfolio">Sponsors</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="index.html#team">Team</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="index.html#about">History</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
 
-				
-		</div>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <img class="logo" alt="Boca JS" src="https://bocajs.org/images/JSBoca3.png">
+                <div id="Transparent"  style="background: rgba(204, 204, 204, 0.5);color:black;width:40em; margin: 0 auto;padding:10px;">
+                        <div class="intro-heading">
+                            <span  id="eventDate">Come Join Us!</span>
+                        </div>
+                        <div class="intro-lead-in" id="eventTitle">South Florida's Largest Developer Meetup</div>
+                        <div id="eventDescription">LOCATION: 980 NORTH FEDERAL HIGHWAY BOCA RATON, FL</div>
+                        <a href="http://meetup.com/bocajs" id="eventUrl" class="page-scroll btn btn-xl">Come Join Us</a>
+                    </div>
+            </div>
+        </div>
+    </header>
 
-		<!-- Scripts -->
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">It's all about you</h2>
+                </div>
+            </div>
+            <div class="row bg-light-gray">
+                <div class="col-lg-12">
+                    <p class="text-muted" style="padding:20px;">
+                            The Boca Raton JavaScript group (Boca-JS) is here to demonstrate the power of this wonderful language to South Florida.
+                            <br /><br />
+                            In addition to vanilla java script, we'll be looking at frameworks such as Node, AngularJS (1, 1.5 AND 2, 4,5,6,7,8,9...), Ember.js, jQuery, ReactJS and Ionic.
+                        
+                    </p>
+                </div>
+                <div class="col-lg-12">
+                    <p class="text-muted" style="padding:20px;">
+                        The BocaJS group meets the 1st Tuesday of each month at
+                        <a href="http://www.cendynspaces.com/">Cendyn Spaces</a>. We have great membersfrom beginner to advanced.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h3 class="section-heading">How to get involved</h3>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-sm-4 col-xs-6">
+                    <a href="mailto:info@bocajs.org">
+                        <span class="fa-stack fa-4x">
+                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                    <h4 class="service-heading">
+                        <a href="mailto:info@bocajs.org">info@bocajs.org</a>
+                    </h4>
+                    <p class="text-muted">This is the best way to contact the organizers.</p>
+                </div>
+                <div class="col-sm-4 col-xs-6">
+                    <span class="fa-stack fa-4x">
+                        <!-- <i class="fa fa-circle fa-stack-2x text-primary"></i> -->
+                        <!-- <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i> -->
+                        <a href="http://www.meetup.com/BocaJS/">
+                            <img border="0" alt="BocaJS" src="http://img.meetup.com/img/logo_82.png">
+                        </a>
+                    </span>
+                    <h4 class="service-heading">
+                        <a href="http://www.meetup.com/BocaJS">Meetup.com</a>
+                    </h4>
+                    <p class="text-muted">We use
+                        <a href="http://www.meetup.com/BocaJS">meetup.com</a> to manage attendance, and communication with our members</p>
+                </div>
+                <div class="col-sm-4 col-xs-6">
+                    <a href="https://twitter.com/hashtag/BocaJS">
+                        <span class="fa-stack fa-4x">
+                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                    <h4 class="service-heading">
+                        <a href="https://twitter.com/hashtag/BocaJS">#BocaJS</a>
+                    </h4>
+                    <p class="text-muted">
+                        <a href="https://twitter.com/hashtag/BocaJS" class="twitter-follow-button" data-show-count="false" data-size="large">Hashtag #BocaJS</a>
+                        <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+                    </p>
+                  
+                </div>
+                <div class="col-sm-3 col-xs-6">
 
-			<script src="https://BocaJS.org/assets/js/jquery.min.js"></script>
-			<script src="https://BocaJS.org/assets/js/jquery.dropotron.min.js"></script>
-			<script src="https://BocaJS.org/assets/js/skel.min.js"></script>
-			<script src="https://BocaJS.org/assets/js/skel-viewport.min.js"></script>
-			<script src="https://BocaJS.org/assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="https://BocaJS.org/assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="https://BocaJS.org/assets/js/main.js"></script>
+                </div>
+            </div>
 
-	</body>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Sponsors</h2>
+                    <h3 class="section-subheading text-muted">
+                        We are generously sponsored by the following organizations, and really couldn't do it without them. Thanks!
+                    </h3>
+                </div>
+            </div>
+            <div class="row">
+                <center>Current Sponsors</center>
+            </div>
+            <div class="row">
+
+                <div class="col-md-6 col-sm-6 col-xs-6 portfolio-item" style="height:300px">
+                    <a href="http://www.cendynspaces.com" target="_blank" NOT-href="#portfolioModal9" class="portfolio-link" NOT-data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-external-link fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="https://palmbeachtech.org/wp-content/uploads/2016/09/12846_Cendyne.png" class="img-responsive" alt="Cendyn Spaces" style="margin: 0 auto;">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Cendyn Spaces</h4>
+                        <p class="text-muted">Amazing Venue Location</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-6 portfolio-item" style="height:300px">
+                    <a href="http://www.SherlockTalent.com/" target="_blank" NOT-href="#portfolioModal7" class="portfolio-link" NOT-data-toggle="modal">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content">
+                                <i class="fa fa-external-link fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="images/SherlockLogoSquare.png" class="img-responsive" alt="Sherlock Talent" style="margin: 0 auto;">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Sherlock Talent</h4>
+                        <p class="text-muted">Pizza and Drinks</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 
+            <div class="row">
+                <center>Past Sponsors</center>
+            </div>
+          
+            --> 
+            
+        </div>
+    </section>
+
+
+    <!-- Team Section -->
+    <section id="team" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Our Amazing Team</h2>
+                    <h3 class="section-subheading text-muted">The organizers who put these events together.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-xs-6">
+                    <div class="team-member">
+                        <img src="https://pbs.twimg.com/profile_images/750772068040540160/GL2d26px_400x400.jpg" class="img-responsive img-circle" alt="">
+                        <h4>Damian Montero</h4>
+                        <p class="text-muted">Organizer / Presenter</p>
+                        <ul class="list-inline social-buttons">
+                            <li>
+                                <a href="https://twitter.com/damianmontero">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/thedamian">
+                                    <i class="fa fa-github"></i>
+                                </a>
+                            </li>
+                             <li><a href="https://ca.linkedin.com/in/damianmontero"><i class="fa fa-linkedin"></i></a></li> 
+                         </ul>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6 col-xs-6">
+                    <div class="team-member">
+                        <img src="https://pbs.twimg.com/profile_images/1152198565/jermboSketchColorIcon_400x400.jpg" class="img-responsive img-circle" alt="">
+                        <h4>Jeremy "Jermbo" Lawson</h4>
+                        <p class="text-muted">Co-organizer</p>
+                        <ul class="list-inline social-buttons">
+                            <li>
+                                <a href="https://twitter.com/jermbo">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/jermbo">
+                                    <i class="fa fa-github"></i>
+                                </a>
+                            </li>
+                           
+                        </ul>
+                    </div>
+                </div>
+                
+
+                
+                <div class="col-sm-6 col-xs-6">
+                        <div class="team-member">
+                            <img src="https://pbs.twimg.com/profile_images/1553191125/image_400x400.jpg" class="img-responsive img-circle" alt="">
+                            <h4>Hector Iribarne</h4>
+                            <p class="text-muted">Co-organizer</p>
+                            <ul class="list-inline social-buttons">
+                                <li>
+                                    <a href="https://twitter.com/hectoriribarne">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/jermbo">
+                                        <i class="fa fa-github"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                </div>
+                <div class="col-sm-6 col-xs-6">
+                    <div class="team-member">
+                        <img src="https://secure.meetupstatic.com/photos/member/1/2/4/0/highres_181984672.jpeg" class="img-responsive img-circle" alt="">
+                        <h4>Adam</h4>
+                        <p class="text-muted">Founder</p>
+                        <ul class="list-inline social-buttons">
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xs-6">
+                        <div class="team-member">
+                            <img src="https://secure.meetupstatic.com/photos/member/8/3/4/9/highres_12693609.jpeg" class="img-responsive img-circle" alt="">
+                            <h4>Michael Vargas</h4>
+                            <p class="text-muted">Co-organizer</p>
+                            <ul class="list-inline social-buttons">
+                                <li>
+                                    <a href="https://twitter.com/uxdevsummit">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+    
+
+
+            
+            </div>
+
+
+                
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text-center">
+                    <p class="large text-muted">BocaJS is run by volunteer organizers. If you'd like to pitch in, please do not hesitate to
+                        <a href="mailto:info@BocaJS.org">contact us</a>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">History</h2>
+                    <h3 class="section-subheading text-muted">Milestones along our path.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="timeline">
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="https://secure.meetupstatic.com/photos/member/1/2/4/0/highres_181984672.jpeg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>Summer 2014</h4>
+                                    <h4 class="subheading">Our Humble Beginnings</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Adam figures there's not enough Javascript being talked about in the mostly Microsoft ASP.Net world which is south florida.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="images/meetup.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>October 2014</h4>
+                                    <h4 class="subheading">Joining Meetup.com</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">It's time to reach the community.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="timeline-image">
+                                <img class="img-circle img-responsive" src="images/background1.jpg" alt="">
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>Sept 2018</h4>
+                                    <h4 class="subheading">1000 member milestone</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p class="text-muted">Alright alright. This might be in the future. but we're really close!</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="timeline-inverted">
+                            <div class="timeline-image">
+                                <h4>Be Part
+                                    <br>Of Our
+                                    <br>Story!</h4>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li>
+                            <a href="https://twitter.com/hashtag/BocaJS">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/bocajs">
+                                <i class="fa fa-github"></i>
+                            </a>
+                        </li>
+                        <!-- <li><a href="#"><i class="fa fa-linkedin"></i></a></li> -->
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li>Published with
+                            <a href="https://pages.github.com/">GitHub Pages</a> (
+                            <a href="https://github.com/bocajs/bocajs.github.io">Source</a>)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+   
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/agency.js"></script>
+
+    <script>
+
+            $(function() {
+                    // Get next event
+
+                fetch('https://bocajswall.azurewebsites.net/nextEvent')
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    console.log(data);
+                    var title = data.title;
+                    var date = data.date;
+                    var desc = data.description;
+                    var location = data.location;
+                    var url = data.url;
+                    var eventDate = new Date(date);
+                    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+                    var eventDateText = eventDate.toLocaleDateString('en-US', options)
+                    console.log(""+eventDateText);
+
+                    $("#eventTitle").html(title);
+                    $("#eventDate").html(""+eventDateText);
+                    $("#eventDescription").html("Location: <BR>"+location);
+                    $("#eventUrl").attr("href",url);
+                });
+            // Next event
+
+            });
+    </script>
+
+</body>
+
 </html>
