@@ -463,8 +463,8 @@
     <script src="js/cbpAnimatedHeader.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="js/agency.js"></script>
-
+    <!-- <script src="js/agency.js"></script> -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-87716-12"></script>
     <script>
 
             $(function() {
@@ -495,8 +495,15 @@
             // Next event
 
             });
-    </script>
 
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-87716-12');
+</script>
+
+    
 </body>
 
 </html>
