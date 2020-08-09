@@ -10,6 +10,11 @@
     <meta name="author" content="BocaJS">
 
     <title>BocaJS - South Florida's JavaScript Community</title>
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 
     <!-- Favicon -->
     <!--[if IE]><link rel="shortcut icon" href="favicon.ico"><![endif]-->
@@ -98,8 +103,23 @@
             </div>
         </div>
     </header>
+    <style>
+        .youtubeIframe {
+            display:inline-block; 
+            margin-right:10px;
+        }
+        #youtubeVideos {
+            overflow-x: scroll;
+            overflow-y: hidden;
+            white-space: nowrap;
 
+        }
+    </style>
     <!-- Services Section -->
+    <h1>Latest videos of events:</h1>
+    <div id="youtubeVideos" style="width:100%;">
+        <h2> Loading...</h2>
+    </div>
     <section id="services">
         <div class="container">
             <div class="row">
@@ -452,11 +472,7 @@
 
    
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
 
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
@@ -493,6 +509,25 @@
                     $("#eventDescription").html("Location: <BR>"+location);
                     $("#eventUrl").attr("href",url);
                 });
+
+                // Youtube Video.
+                var youtubeVideos = document.getElementById("youtubeVideos");
+                fetch('https://wall.bocajs.org/GetYoutubeFeed')
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(videos) {
+                    youtubeVideos.innerHTML="";
+                    videos.map(video => {
+                        var VideoNode =  document.createElement("Div"); 
+                        VideoNode.classList.add("youtubeIframe")
+                        VideoNode.innerHTML = "<iframe class=\"video\" src=\"https://www.youtube.com/embed/" + video.videoID + "?enablejsapi=1\" width=600 height=300 frameborder=\"0\" allowfullscreen></iframe>";
+                        youtubeVideos.appendChild(VideoNode);    
+                    });
+                    
+                
+                });
+                
             // Next event
 
             });
