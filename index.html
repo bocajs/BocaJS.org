@@ -23,6 +23,8 @@
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="css/card.css">
+
     <!-- Custom CSS -->
     <link href="css/bocajs.css" rel="stylesheet">
 
@@ -87,7 +89,7 @@
     </nav>
 
     <!-- Header -->
-    <header>
+    <header id="topSection">
         <div class="container">
             <div class="intro-text">
                 <img class="logo" alt="Boca JS" src="https://bocajs.org/images/JSBoca3.png">
@@ -104,22 +106,11 @@
         </div>
     </header>
     <style>
-        .youtubeIframe {
-            display:inline-block; 
-            margin-right:10px;
-        }
-        #youtubeVideos {
-            overflow-x: scroll;
-            overflow-y: hidden;
-            white-space: nowrap;
 
-        }
     </style>
     <!-- Services Section -->
-    <h1>Latest videos of events:</h1>
-    <div id="youtubeVideos" style="width:100%;">
-        <h2> Loading...</h2>
-    </div>
+    <section class="card-list" id="YoutubeCards">
+    </section>
     <section id="services">
         <div class="container">
             <div class="row">
@@ -508,6 +499,7 @@
 
                 // Youtube Video.
                 var youtubeVideos = document.getElementById("youtubeVideos");
+                var YoutubeCards = document.getElementById("YoutubeCards");
                 fetch('https://wall.bocajs.org/GetYoutubeFeed')
                 .then(function(response) {
                     return response.json();
@@ -515,10 +507,13 @@
                 .then(function(videos) {
                     youtubeVideos.innerHTML="";
                     videos.map(video => {
-                        var VideoNode =  document.createElement("Div"); 
-                        VideoNode.classList.add("youtubeIframe")
-                        VideoNode.innerHTML = "<iframe class=\"video\" src=\"https://www.youtube.com/embed/" + video.videoID + "?enablejsapi=1\" width=600 height=300 frameborder=\"0\" allowfullscreen></iframe>";
-                        youtubeVideos.appendChild(VideoNode);    
+                        var VideoCard =  document.createElement("article"); 
+                        VideoCard.classList.add("card");
+                        var headerCard =  document.createElement("header"); 
+                        headerCard.classList.add("card-header");
+                        headerCard.innerHTML = "<iframe class=\"video\" src=\"https://www.youtube.com/embed/" + video.videoID + "?enablejsapi=1\" width=400 height=200 frameborder=\"0\" allowfullscreen></iframe><a href=\"" + video.videoUrlLink + "\" target=\"_blank\"><h2>" + video.title + "</h2></a>";
+                        VideoCard.appendChild(headerCard);
+                        YoutubeCards.appendChild(VideoCard);
                     });
                     
                 

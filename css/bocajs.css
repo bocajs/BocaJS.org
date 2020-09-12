@@ -220,7 +220,7 @@ fieldset[disabled] .btn-xl.active {
     font-size: 1.5em;
   }
 }
-header {
+#topSection {
   background-image: url('../images/background1.jpg');
   background-repeat: none;
   background-attachment: scroll;
@@ -232,24 +232,24 @@ header {
   text-align: center;
   color: white;
 }
-header img.logo {
+#topSection img.logo {
   float: left;
   margin-left: -24px;
   margin-top: -16px;
   padding-bottom: 40px;
   width: 150px;
 }
-header .intro-text {
+#topSection .intro-text {
   padding-top: 80px;
   padding-bottom: 80px;
 }
-header .intro-text .intro-lead-in {
+#topSection .intro-text .intro-lead-in {
   font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 22px;
   line-height: 22px;
   margin-bottom: 25px;
 }
-header .intro-text .intro-heading {
+#topSection .intro-text .intro-heading {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   text-transform: none;
@@ -260,22 +260,22 @@ header .intro-text .intro-heading {
   margin-bottom: 25px;
 }
 @media (min-width: 768px) {
-  header img.logo {
+  #topSection img.logo {
     margin-left: -24px;
     margin-top: -48px;
     width: 200px;
   }
-  header .intro-text {
+  #topSection .intro-text {
     padding-top: 150px;
     padding-bottom: 150px;
   }
-  header .intro-text .intro-lead-in {
+  #topSection .intro-text .intro-lead-in {
     font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 32px;
     line-height: 32px;
     margin-bottom: 25px;
   }
-  header .intro-text .intro-heading {
+  #topSection .intro-text .intro-heading {
     font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-transform: uppercase;
     text-transform: none;
