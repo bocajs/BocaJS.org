@@ -498,14 +498,12 @@
                 });
 
                 // Youtube Video.
-                var youtubeVideos = document.getElementById("youtubeVideos");
                 var YoutubeCards = document.getElementById("YoutubeCards");
                 fetch('https://wall.bocajs.org/GetYoutubeFeed')
                 .then(function(response) {
                     return response.json();
                 })
                 .then(function(videos) {
-                    youtubeVideos.innerHTML="";
                     videos.map(video => {
                         var VideoCard =  document.createElement("article"); 
                         VideoCard.classList.add("card");
